@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :projects, through: :user_projects
   
   def is_admin?
-    1
+    is_admin
   end
 
 end
