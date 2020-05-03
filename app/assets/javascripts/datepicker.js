@@ -1,5 +1,8 @@
 $(document).ready(function() {
   $(function() {
-    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+    setTimeout(function(){
+      $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+    }, 1000)
+    
   });
 });
