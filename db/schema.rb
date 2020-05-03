@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_024249) do
+ActiveRecord::Schema.define(version: 2020_05_03_073848) do
 
   create_table "members", force: :cascade do |t|
     t.integer "tenant_id"
@@ -42,30 +42,22 @@ ActiveRecord::Schema.define(version: 2020_05_03_024249) do
     t.index ["tenant_id"], name: "index_tenants_on_tenant_id"
   end
 
+  create_table "tenants1", force: :cascade do |t|
+    t.integer "tenant_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tenants1_on_name"
+    t.index ["tenant_id"], name: "index_tenants1_on_tenant_id"
+  end
+
   create_table "tenants_users", id: false, force: :cascade do |t|
     t.integer "tenant_id", null: false
     t.integer "user_id", null: false
     t.index ["tenant_id", "user_id"], name: "index_tenants_users_on_tenant_id_and_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.boolean "skip_confirm_change_password", default: false
-    t.integer "tenant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["tenant_id"], name: "index_users_on_tenant_id"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'inet' for column 'current_sign_in_ip'
 
 end
