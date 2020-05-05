@@ -19,7 +19,7 @@ class Payment < ActiveRecord::Base
                           currency: 'usd'
     """
     charge = Stripe::Charge.create(
-        amount: 100,
+        amount: 1000,
         currency: "USD",
         source: 'tok_amex'
       )
